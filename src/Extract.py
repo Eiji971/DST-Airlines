@@ -14,15 +14,14 @@ spark = SparkSession.builder \
 
 
 headers = {
-    "Authorization": "Bearer v9fuaz6f54vtceg2wse4jpbe",
+    "Authorization": "Bearer g36yfg4cmtdzx9nxhzyu2k95",
     "Accept": "application/json"
 }
 
 apiUrls = [
     ("https://api.lufthansa.com/v1/mds-references/airlines?limit=100&offset=0", "airlines.json", "AirlineResource", "Airlines"),
     ("https://api.lufthansa.com/v1/mds-references/airports/?limit=100&offset=0&LHoperated=1", "airport.json", "AirportResource", "Airports"),
-    ("https://api.lufthansa.com/v1/mds-references/aircraft/?limit=100&offset=0", "aircraft.json", "AircraftResource", "AircraftSummaries"),
-    ("https://api.lufthansa.com/v1/flight-schedules/flightschedules/passenger?airlines=LH&startDate=21JUN23&endDate=21JUL23&daysOfOperation=1234567&timeMode=UTC", "flight_schedule.json", "")
+    ("https://api.lufthansa.com/v1/mds-references/aircraft/?limit=100&offset=0", "aircraft.json", "AircraftResource", "AircraftSummaries")
 ]
 def fetchIterateAndWrite(url, filename, resourceKey, dataKey): 
     delaySec = 1
@@ -55,53 +54,58 @@ def fetchIterateAndWrite(url, filename, resourceKey, dataKey):
        writer.write(json.dumps(fusedData))
 
 
-for url, filename, resourceKey, dataKey in apiUrls:
-    fetchIterateAndWrite(url, filename, resourceKey, dataKey)
+#for url, filename, resourceKey, dataKey in apiUrls:
+#    fetchIterateAndWrite(url, filename, resourceKey, dataKey)
 
+output_path = "airline"
+
+def transform_df(raw_df, column_mapping):
+    exploded_df = raw_df.withColumn("combined", explode(arrays_zip(*column_mapping.keys())))
+    transformed_df = exploded_df.select("combined.*").toDF(*column_mapping.values())
+    return transformed_df
+
+# Read airlines.json
 dfRawAirline = spark.read.json("airlines.json")
-#dfRawAirline.printSchema()
+column_mapping_airline = {
+    "Airline.AirlineID": "AirlineID",
+    "Airline.AirlineID_ICAO": "AirlineID_ICAO",
+    "Airline.Names.Name.$": "Name",
+    "Airline.Names.Name.@LanguageCode": "LanguageCode"
+}
+transformedAirlineDf = transform_df(dfRawAirline, column_mapping_airline)
+transformedAirlineDf.drop("AirlineResource", "AirlineResource.meta").write.csv(output_path, mode="overwrite", header=True)
 
 
-explodedDf = dfRawAirline.withColumn("combined", explode(arrays_zip(col("Airline.AirlineID"),
-                                                                   col("Airline.AirlineID_ICAO"),
-                                                                   col("Airline.Names.Name.$"),
-                                                                   col("Airline.Names.Name.@LanguageCode"))))
-transformedDf = explodedDf.select("combined.*").toDF("AirlineID", "AirlineID_ICAO", "Name", "LanguageCode").drop("AirlineResource","AirlineResource.meta")
 
-transformedDf.show()
-#transformedDf.printSchema()
-
-
+# Read airport.json
 dfRawAirport = spark.read.json("airport.json")
-#dfRawAirport.printSchema()
+column_mapping_airport = {
+    "Airport.AirportCode": "AirportCode",
+    "Airport.CityCode": "City",
+    "Airport.CountryCode": "Country",
+    "Airport.Position.Coordinate.Latitude": "Latitude",
+    "Airport.Position.Coordinate.Longitude": "Longitude",
+    "Airport.TimeZoneId": "TimeZoneId",
+    "Airport.UtcOffset": "UtcOffset"
+}
+transformedAirportDf = transform_df(dfRawAirport, column_mapping_airport)
+transformedAirportDf.write.csv("airport", mode="overwrite", header=True)
 
-explodeAirportdDf = dfRawAirport.withColumn("combined", explode(arrays_zip(col("Airport.AirportCode"),
-                                                                   col("Airport.CityCode"),
-                                                                   col("Airport.CountryCode"),
-                                                                   col("Airport.Position.Coordinate.Latitude"),
-                                                                   col("Airport.Position.Coordinate.Longitude"),
-                                                                   col("Airport.TimeZoneId"),
-                                                                   col("Airport.UtcOffset"))))
-transformedAirportDf = explodeAirportdDf.select("combined.*").toDF("AirportCode", "City", "Country", "Latitude", "Longitude", "TimeZoneId", "UtcOffset")
-
-transformedAirportDf.show()
-#transformedAirportDf.printSchema()
-
-
+# Read aircraft.json
 dfRawAircraft = spark.read.json("aircraft.json")
-#dfRawAircraft.printSchema()
-
-explodeAircraftdDf = dfRawAircraft.withColumn("combined", explode(arrays_zip(col("AircraftSummary.AircraftCode"),
-                                                                   col("AircraftSummary.AirlineEquipCode"),
-                                                                   col("AircraftSummary.Names.Name.$"),
-                                                                   col("AircraftSummary.Names.Name.@LanguageCode"))))
-transformedAircraftDf = explodeAircraftdDf.select("combined.*").toDF("AircraftCode", "AirlineEquipCode", "Name", "Language")
-
-transformedAircraftDf.show()
-
+column_mapping_aircraft = {
+    "AircraftSummary.AircraftCode": "AircraftCode",
+    "AircraftSummary.AirlineEquipCode": "AirlineEquipCode",
+    "AircraftSummary.Names.Name.$": "Name",
+    "AircraftSummary.Names.Name.@LanguageCode": "Language"
+}
+transformedAircraftDf = transform_df(dfRawAircraft, column_mapping_aircraft)
+transformedAircraftDf.write.csv("aircraft", mode="overwrite", header=True)
 
 
-apiUrl2 = "https://api.lufthansa.com/v1/flight-schedules/flightschedules/passenger?airlines=LH&startDate=21MAY23&endDate=22MAY23&daysOfOperation=1234567&timeMode=UTC"
+
+
+apiUrl2 = "https://api.lufthansa.com/v1/flight-schedules/flightschedules/passenger?airlines=LH&startDate=21JUN23&endDate=22JUL23&daysOfOperation=1234567&timeMode=UTC"
 
 response = requests.get(apiUrl2, headers=headers)
 dataJson = response.json()
@@ -153,3 +157,5 @@ scheduleDF = transformedLHScheduleDf.select(
 ).drop("ArrivalTimeVariation", "ArrivalTimeUTC", "DepartureTimeUTC", "registration")
 
 scheduleDF.show()
+
+

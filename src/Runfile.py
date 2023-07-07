@@ -10,13 +10,13 @@ import ExtractFunctionsDST
 # List of URL fro API call, file name and data Key 
 apiUrls = [
     ("https://api.lufthansa.com/v1/mds-references/airlines?limit=100&offset=0", "airlines.json", "AirlineResource", "Airlines"),
-    ("https://api.lufthansa.com/v1/mds-references/airports/?limit=100&offset=0&LHoperated=1", "airport.json", "AirportResource", "Airport"),
-    ("https://api.lufthansa.com/v1/mds-references/aircraft/?limit=100&offset=0", "aircraft.json", "AircraftResource", "AircraftSummary")
+    ("https://api.lufthansa.com/v1/mds-references/airports/?limit=100&offset=0&LHoperated=1", "airport.json", "AirportResource", "Airports"),
+    ("https://api.lufthansa.com/v1/mds-references/aircraft/?limit=100&offset=0", "aircraft.json", "AircraftResource", "AircraftSummaries")
 ]
 
 # Information on the headers for API calls
 headers = {
-    "Authorization": "Bearer ab94xgw6wjwuvzted5ud7b67",
+    "Authorization": "Bearer ab5e69w4943ch9hruwrypau5",
     "Accept": "application/json"
 }
 
@@ -24,8 +24,6 @@ headers = {
 for url, filename, resource_key, data_key in apiUrls:
    ExtractFunctionsDST.fetch_iterate_and_write(url, filename, resource_key, data_key)
 
-#for url, filename, resource_key, data_key in apiUrls:
-#    ExtractFunctionsDST.load_json_to_dataframe(filename, data_key)
 
 # Processing of Airline Data 
 fileName = "airlines.json"
@@ -75,7 +73,7 @@ formattedDate = today.strftime("%Y-%m-%d")
 fileName = f'flight_status1{formattedDate}.json'
 
 # Retrieval of Flight Status from the day 
-response_flight_info = ExtractFunctionsDST.fetch_flight_information(origin, destination, formattedDate, headers)
+response_flight_info = ExtractFunctionsDST.fetch_flight_information(origin, destination, formattedDate, headers, fileName)
 
 # Write a file from the Flight Status API 
 ExtractFunctionsDST.write_responses_to_file(response_flight_info, fileName)

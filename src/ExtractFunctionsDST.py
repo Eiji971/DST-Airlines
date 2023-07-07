@@ -7,7 +7,7 @@ from datetime import datetime
 import os 
 
 headers = {
-    "Authorization": "Bearer ab94xgw6wjwuvzted5ud7b67",
+    "Authorization": "Bearer ab5e69w4943ch9hruwrypau5",
     "Accept": "application/json"
     }
 
@@ -275,10 +275,51 @@ def process_flight_status_data(filename):
                                                    'FlightInformation.Flights.Flight.Arrival.Estimated.Date', 'FlightInformation.Flights.Flight.Arrival.Estimated.Time',
                                                    'FlightInformation.Flights.Flight.Status.Code', 'FlightInformation.Flights.Flight.Departure.Estimated.Date'], axis=1),
                               df_raw_status['FlightInformation.Flights.Flight'].apply(pd.Series)], axis=1)
+    
+    df_raw_status_1 = df_raw_status[['Departure', 'Arrival', 'MarketingCarrierList', 'OperatingCarrier', 'Equipment', 'Status']]
+
+    df_raw_status_1[['DepAirportCode', 'DepSchedDate', 'DepSchedTime', 'DepActualTime', 'DepStatusCode', 'DepStatusDesc']] = df_raw_status_1['Departure'].apply(
+        lambda x: pd.Series([
+            x['AirportCode'],
+            x['Scheduled']['Date'],
+            x['Scheduled']['Time'],
+            x['Actual']['Time'] if 'Actual' in x and 'Time' in x['Actual'] else None,
+            x['Status']['Code'],
+            x['Status']['Description']
+        ]) if isinstance(x, dict) else pd.Series([None, None, None, None, None])
+    )
+
+    df_raw_status_1[['ArrivalAirportCode', 'ArrSchedDate', 'ArrSchedTime', 'ArrActualTime', 'ArrActualDate', 'ArrStatusCode', 'ArrStatusDesc']] = df_raw_status_1['Arrival'].apply(
+        lambda x: pd.Series([
+            x['AirportCode'],
+            x['Scheduled']['Date'],
+            x['Scheduled']['Time'],
+            x['Actual']['Time'] if 'Actual' in x and 'Time' in x['Actual'] else None,
+            x['Actual']['Date'] if 'Actual' in x and 'Date' in x['Actual'] else None,
+            x['Status']['Code'],
+            x['Status']['Description']
+        ]) if isinstance(x, dict) else pd.Series([None, None, None, None, None])
+    )
+
+    df_raw_status_1[['OpAirlineID', 'OpFlightNumber']] = df_raw_status_1['OperatingCarrier'].apply(
+        lambda x: pd.Series([
+            x['AirlineID'],
+            x['FlightNumber']
+        ]) if isinstance(x, dict) else pd.Series([None, None])
+    )
+
+    df_raw_status_1[['AircraftCode']] = df_raw_status_1['Equipment'].apply(
+        lambda x: pd.Series([
+            x['AircraftCode']
+        ]) if isinstance(x, dict) else pd.Series([None])
+    )
+
+    df_raw_status_1.drop(['Departure', 'Arrival', 'OperatingCarrier', 'MarketingCarrierList', 'Equipment', 'Status'], axis=1, inplace=True)
 
     df_raw_status = df_raw_status.rename(columns={
-        'FlightInformation.Flights.Flight.Departure.AirportCode': 'startDate',
-        'FlightInformation.Flights.Flight.Departure.Scheduled.Date': 'SchedDate',
+        'FlightInformation.Flights.Flight.Departure.AirportCode': 'DepAirportCode',
+        'FlightInformation.Flights.Flight.Departure.Scheduled.Date': 'DepSchedDate',
+        'FlightInformation.Flights.Flight.Departure.Scheduled.Time': 'DepSchedTime',
         'FlightInformation.Flights.Flight.Departure.Actual.Date': 'DepActualDate',
         'FlightInformation.Flights.Flight.Departure.Actual.Time': 'DepActualTime',
         'FlightInformation.Flights.Flight.Departure.Status.Code': 'DepStatusCode',
@@ -297,8 +338,13 @@ def process_flight_status_data(filename):
         'FlightInformation.Flights.Flight.OperatingCarrier.FlightNumber': 'OpFlightNumber'
     }).drop(['FlightInformation.Flights.Flight.Status.Description', 'Departure', 'Arrival', 'MarketingCarrierList', 'OperatingCarrier', 'Equipment', 'Status', 0], axis=1)
 
-    df_raw_status.to_csv(f"flight_status{formattedDate}.csv", index=False)
-    return df_raw_status
+    df_raw_status.dropna()
+    df_raw_status_1.dropna()
+    df_merged_status = df_raw_status.merge(df_raw_status_1, how='outer')
+
+    df_merged_status.dropna(how='all', inplace=True)
+    df_merged_status.to_csv(f"flight_status{formattedDate}.csv", index=False)
+    return df_merged_status
 
 
 def fetch_flight_information(origin, destination, formatted_date, headers):

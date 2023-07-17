@@ -16,7 +16,7 @@ apiUrls = [
 
 # Information on the headers for API calls
 headers = {
-    "Authorization": "Bearer ab5e69w4943ch9hruwrypau5",
+    "Authorization": "Bearer jbu7hy83jbdfjsk692hbys9f",
     "Accept": "application/json"
 }
 
@@ -73,7 +73,7 @@ formattedDate = today.strftime("%Y-%m-%d")
 fileName = f'flight_status1{formattedDate}.json'
 
 # Retrieval of Flight Status from the day 
-response_flight_info = ExtractFunctionsDST.fetch_flight_information(origin, destination, formattedDate, headers, fileName)
+response_flight_info = ExtractFunctionsDST.fetch_flight_information(origin, destination, formattedDate, headers)
 
 # Write a file from the Flight Status API 
 ExtractFunctionsDST.write_responses_to_file(response_flight_info, fileName)

@@ -7,7 +7,7 @@ from datetime import datetime
 import os 
 
 headers = {
-    "Authorization": "Bearer ab5e69w4943ch9hruwrypau5",
+    "Authorization": "Bearer 8dh46yd7yng3prkueje5mnxp",
     "Accept": "application/json"
     }
 
@@ -399,4 +399,4 @@ def write_responses_to_file(responses_list, file_name):
     with open(file_name, 'rb+') as file:
         file.seek(-1, os.SEEK_END)
         file.truncate()
-        file.write(b']}')
+        file.write(b'}')

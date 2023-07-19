@@ -1,0 +1,101 @@
+AirportCode,City,Country,Names,UtcOffset,TimeZoneId,Latitude,Longitude
+AAE,AAE,DZ,Annaba,+01:00,Africa/Algiers,36.8222,7.8092
+AAL,AAL,DK,Aalborg,+01:00,Europe/Copenhagen,57.0928,9.8492
+AAQ,AAQ,RU,Anapa,+03:00,Europe/Moscow,45.0022,37.3472
+AAR,AAR,DK,Aarhus,+01:00,Europe/Copenhagen,56.3039,10.6194
+ABE,ABE,US,Allentown/Bethlehem,-05:00,America/New_York,40.6522,-75.4408
+ABI,ABI,US,Abilene/Regional Airport,-06:00,America/Chicago,32.4114,-99.6819
+ABJ,ABJ,CI,Abidjan,+00:00,Africa/Abidjan,5.2614,-3.9264
+ABK,ABK,ET,Kabri Dar,+03:00,Africa/Addis_Ababa,6.7339,44.2553
+ABQ,ABQ,US,Albuquerque,-07:00,America/Denver,35.0406,-106.6094
+ABS,ABS,EG,Abu Simbel,+02:00,Africa/Cairo,22.3758,31.6117
+ABV,ABV,NG,Abuja,+01:00,Africa/Lagos,9.0067,7.2631
+ABY,ABY,US,Albany (US),-05:00,America/New_York,31.5356,-84.1944
+ABZ,ABZ,GB,Aberdeen,+00:00,Europe/London,57.2042,-2.2003
+ACA,ACA,MX,Acapulco,-06:00,America/Mexico_City,16.7569,-99.7539
+ACC,ACC,GH,Accra,+00:00,Africa/Accra,5.6053,-0.1667
+ACE,ACE,ES,Лансароте,+00:00,Atlantic/Canary,28.9456,-13.6053
+ACT,ACT,US,Waco,-06:00,America/Chicago,31.6114,-97.2306
+ACV,ACV,US,Arcata/Eureka,-08:00,America/Los_Angeles,40.9781,-124.1086
+ADA,ADA,TR,Adana,+03:00,Europe/Istanbul,36.9822,35.2803
+ADB,IZM,TR,Izmir,+03:00,Europe/Istanbul,38.2925,27.1569
+ADD,ADD,ET,Addis Ababa,+03:00,Africa/Addis_Ababa,8.9778,38.7994
+ADF,ADF,TR,Αντιγιαμάν,+03:00,Europe/Istanbul,37.7314,38.4689
+ADL,ADL,AU,Adelaide,+09:30,Australia/Adelaide,-34.945,138.5306
+ADZ,ADZ,CO,San Andres Island,-05:00,America/Bogota,12.5836,-81.7111
+AEP,BUE,AR,Buenos Aires Aeroparque J. N.,-03:00,America/Argentina/Buenos_Aires,-34.5589,-58.4164
+AER,AER,RU,Сочи,+03:00,Europe/Moscow,43.45,39.9567
+AES,AES,NO,Aalesund,+01:00,Europe/Oslo,62.5603,6.1103
+AEX,AEX,US,Alexandria,-06:00,America/Chicago,31.3275,-92.5497
+AEY,AEY,IS,Akureyri,+00:00,Atlantic/Reykjavik,65.6586,-18.0722
+AGA,AGA,MA,Агадир,+01:00,Africa/Casablanca,30.325,-9.4131
+AGH,AGH,SE,Helsingborg - Angelholm,+01:00,Europe/Stockholm,56.2961,12.8472
+AGP,AGP,ES,Малага,+01:00,Europe/Madrid,36.675,-4.4992
+AGR,AGR,IN,Agra,+05:30,Asia/Kolkata,27.1558,77.9608
+AGU,AGU,MX,Aguascalientes,-06:00,America/Mexico_City,21.7056,-102.3178
+AGX,AGX,IN,Agatti Island,+05:30,Asia/Kolkata,10.8236,72.1761
+AGY,MUC,DE,Augsburg Hbf,+01:00,Europe/Berlin,48.3656,10.8864
+AHB,AHB,SA,Abha,+03:00,Asia/Riyadh,18.2403,42.6567
+AJI,AJI,TR,Άγκρι,+03:00,Europe/Istanbul,39.6539,43.0264
+AJL,AJL,IN,Aizawl,+05:30,Asia/Kolkata,23.8389,92.6203
+AJR,AJR,SE,Arvidsjaur,+01:00,Europe/Stockholm,65.5903,19.2819
+AJU,AJU,BR,Aracaju,-03:00,America/Araguaina,-10.9839,-37.0703
+AKJ,AKJ,JP,Asahikawa,+09:00,Asia/Tokyo,43.6708,142.4475
+AKL,AKL,NZ,Auckland,+12:00,Pacific/Auckland,-37.0097,174.7917
+AKU,AKU,CN,Aksu,+08:00,Asia/Shanghai,41.2628,80.2919
+ALA,ALA,KZ,Almaty,+06:00,Asia/Almaty,43.3533,77.0422
+ALB,ALB,US,Albany (US),-05:00,America/New_York,42.7483,-73.8017
+ALC,ALC,ES,Alicante,+01:00,Europe/Madrid,38.2822,-0.5581
+ALF,ALF,NO,Alta,+01:00,Europe/Oslo,69.9761,23.3717
+ALG,ALG,DZ,Algiers,+01:00,Africa/Algiers,36.6942,3.2147
+ALW,ALW,US,Walla Walla,-08:00,America/Los_Angeles,46.095,-118.2878
+AMA,AMA,US,Amarillo,-06:00,America/Chicago,35.2194,-101.7058
+AMD,AMD,IN,Ahmedabad,+05:30,Asia/Kolkata,23.0772,72.6347
+AMH,AMH,ET,Arba Mintch,+03:00,Africa/Addis_Ababa,6.0394,37.5906
+AMI,AMI,ID,Mataram,+08:00,Asia/Makassar,-8.5608,116.0947
+AMM,AMM,JO,Аман,+03:00,Asia/Amman,31.7225,35.9933
+AMS,AMS,NL,Амстердам,+01:00,Europe/Amsterdam,52.3081,4.7642
+ANC,ANC,US,Anchorage,-09:00,America/Anchorage,61.1744,-149.9964
+ANF,ANF,CL,Antofagasta,-04:00,America/Santiago,-23.4444,-70.445
+ANU,ANU,AG,Antigua,-04:00,America/Antigua,17.1367,-61.7928
+ANX,ANX,NO,Andenes,+01:00,Europe/Oslo,69.2925,16.1442
+AOE,AOE,TR,,+03:00,Europe/Istanbul,39.81,30.5169
+AOI,AOI,IT,Ancona,+01:00,Europe/Rome,43.6167,13.3603
+AOJ,AOJ,JP,,+09:00,Asia/Tokyo,40.7347,140.6908
+AOK,AOK,GR,Karpathos,+02:00,Europe/Athens,35.4214,27.1461
+APL,APL,MZ,Nampula,+02:00,Africa/Maputo,-15.1056,39.2817
+APW,APW,WS,Apia Faleolo,+13:00,Pacific/Apia,-13.8297,-171.9972
+AQJ,AQJ,JO,Aqaba,+03:00,Asia/Amman,29.6117,35.0181
+ARI,ARI,CL,Arica,-04:00,America/Santiago,-18.3486,-70.3386
+ARK,ARK,TZ,Arusha,+03:00,Africa/Dar_es_Salaam,-3.3672,36.625
+ARN,STO,SE,Стокхолм,+01:00,Europe/Stockholm,59.6519,17.9186
+ASB,ASB,TM,Aschgabad,+05:00,Asia/Ashgabat,37.9869,58.3608
+ASE,ASE,US,Aspen,-07:00,America/Denver,39.2192,-106.8672
+ASO,ASO,ET,Asosa,+03:00,Africa/Addis_Ababa,10.0186,34.5864
+ASR,ASR,TR,Kayseri,+03:00,Europe/Istanbul,38.7703,35.4956
+ASU,ASU,PY,Asuncion,-04:00,America/Asuncion,-25.2397,-57.5192
+ASW,ASW,EG,Aswan,+02:00,Africa/Cairo,23.9644,32.82
+ATH,ATH,GR,Атина,+02:00,Europe/Athens,37.9364,23.9444
+ATL,ATL,US,Atlanta,-05:00,America/New_York,33.6367,-84.4281
+ATQ,ATQ,IN,Amritsar,+05:30,Asia/Kolkata,31.7097,74.7972
+ATW,ATW,US,Appleton,-06:00,America/Chicago,44.2667,-88.5167
+ATZ,ATZ,EG,Assiut,+02:00,Africa/Cairo,27.0464,31.0119
+AUB,MUC,DE,Augsburg Busbahnhof Bieberbachstrasse,+01:00,Europe/Berlin,48.4025,10.8789
+AUH,AUH,AE,Abu Dhabi,+04:00,Asia/Dubai,24.4331,54.6511
+AUS,AUS,US,Austin,-06:00,America/Chicago,30.1944,-97.67
+AUW,AUW,US,Wausau,-06:00,America/Chicago,44.9283,-89.6267
+AVL,AVL,US,Asheville,-05:00,America/New_York,35.4361,-82.5419
+AVP,AVP,US,Wilkes-Barre,-05:00,America/New_York,41.3386,-75.7233
+AWA,AWA,ET,Awassa,+03:00,Africa/Addis_Ababa,7.0675,38.4906
+AXD,AXD,GR,Alexandroupolis,+02:00,Europe/Athens,40.8558,25.9564
+AXM,AXM,CO,Armenia,-05:00,America/Bogota,4.4528,-75.7664
+AXT,AXT,JP,Akita,+09:00,Asia/Tokyo,39.6156,140.2186
+AXU,AXU,ET,Axum,+03:00,Africa/Addis_Ababa,14.1467,38.7728
+AYT,AYT,TR,Antalya,+03:00,Europe/Istanbul,36.8986,30.8006
+AZO,AZO,US,Kalamazoo,-05:00,America/New_York,42.235,-85.5519
+BAH,BAH,BH,Bahrain,+03:00,Asia/Bahrain,26.2708,50.6336
+BAL,BAL,TR,Batman,+03:00,Europe/Istanbul,37.9289,41.1167
+BAQ,BAQ,CO,Barranquilla,-05:00,America/Bogota,10.8897,-74.7808
+BAV,BAV,CN,Baotou,+08:00,Asia/Shanghai,40.5606,109.9964
+BBA,BBA,CL,Balmaceda,-04:00,America/Santiago,-45.9161,-71.6894
+BBI,BBI,IN,Bhubaneswar,+05:30,Asia/Kolkata,20.2444,85.8178

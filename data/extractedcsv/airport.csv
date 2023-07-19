@@ -1,0 +1,101 @@
+AircraftCode,Names,Name
+100,Fokker 100,F100
+141,BAE Systems 146-100 Passenger,B461
+142,BAE Systems 146-200 Passenger,B462
+143,BAE Systems 146-300 Passenger,B463
+14X,BAE Systems 146-100 Freighter,B461
+14Y,BAE Systems 146-200 Freighter,B462
+14Z,BAE Systems 146-300 Freighter,B463
+221,Airbus A220-100,BCS1
+223,Airbus A220-300,BCS3
+290,E190-E2,E290
+295,E195-E2,E295
+312,Airbus A310-200 Passenger,A310
+313,Airbus A310-300 Passenger,A310
+318,Airbus A318,A318
+319,Airbus A319,A319
+31A,Airbus A318 (sharklets),A318
+31B,Airbus A319 (sharklets),A319
+31N,Airbus A319neo,A19N
+31X,Airbus A310-200 Freighter,A310
+31Y,Airbus A310-300 Freighter,A310
+320,Airbus A320,A320
+321,Airbus A321,A321
+32A,Airbus A320 (sharklets),A320
+32B,Airbus A321 (sharklets),A321
+32F,Airbus A320 Freighter,A320
+32N,Airbus A320neo,A20N
+32Q,Airbus A321neo,A21N
+32X,Airbus A321 Freighter,A321
+332,Airbus A330-200,A332
+333,Airbus A330-300,A333
+33X,Airbus A330-200 Freighter,A332
+342,Airbus A340-200,A342
+343,Airbus A340-300,A343
+345,Airbus A340-500,A345
+346,Airbus A340-600,A346
+351,Airbus A350-1000,ZZZZ
+358,Airbus A350-800,ZZZZ
+359,Airbus A350-900,A359
+388,Airbus A380-800 Passenger,A388
+38F,Airbus A380-800F Freighter,A388
+703,Boeing 707-320B / 320C Passenger,B703
+70F,Boeing 707-320B / 320C Freighter,B703
+70M,Boeing 707-320B / 320C Mixed Configuration,B703
+717,Boeing 717-200,B712
+721,Boeing 727-100 Passenger,B721
+722,Boeing 727-200 Passenger,B722
+72B,Boeing 727-100 Mixed Configuration,B721
+72C,Boeing 727-200 Mixed Configuration,B722
+72W,Boeing 727-200 (winglets) Passenger,B722
+72X,Boeing 727-100 Freighter,B721
+72Y,Boeing 727-200 Freighter,B722
+731,Boeing 737-100 Passenger,B731
+732,Boeing 737-200 Passenger,B732
+733,Boeing 737-300 Passenger,B733
+734,Boeing 737-400 Passenger,B734
+735,Boeing 737-500 Passenger,B735
+736,Boeing 737-600 Passenger,B736
+738,Boeing 737-800 Passenger,B738
+739,Boeing 737-900 Passenger,B739
+73C,Boeing 737-300 (winglets) Passenger,B733
+73E,Boeing 737-500 (winglets) Passenger,B735
+73G,Boeing 737-700 Passenger,B737
+73H,Boeing 737-800 (winglets) Passenger/BBJ2,B738
+73J,Boeing 737-900 (winglets) Passenger/BBJ3,B739
+73L,Boeing 737-200 Mixed Configuration,B732
+73N,Boeing 737-300 Mixed Configuration,B733
+73P,Boeing 737-400 Freighter,B734
+73Q,Boeing 737-400 Mixed Configuration,B734
+73R,Boeing 737-700 Mixed Configuration/BBJC,B737
+73S,Boeing 737-700 Freighter,B737
+73W,Boeing 737-700 (winglets) Passenger/BBJ1,B737
+73X,Boeing 737-200 Freighter,B732
+73Y,Boeing 737-300 Freighter,B733
+741,Boeing 747-100 Passenger,B741
+742,Boeing 747-200 Passenger,B742
+743,Boeing 747-300 / 747-100/200 SUD Passenger,B743
+744,Boeing 747-400 Passenger,B744
+748,,
+748,,
+74B,Boeing 747-400 Swingtail Freighter,B744
+74C,Boeing 747-200 Mixed Configuration,B742
+74D,Boeing 747-300 / 747-200 SUD Mixed Configuration,B743
+74E,Boeing 747-400 Mixed Configuration,B744
+74H,Boeing 747-8 Passenger,B748
+74J,Boeing 747-400 (Domestic) Passenger,B74D
+74L,Boeing 747SP Passenger,B74S
+74N,Boeing 747-8F Freighter,B748
+74R,Boeing 747SR Passenger,B74R
+74T,Boeing 747-100 Freighter,B741
+74U,Boeing 747-300 / 747-200 SUD Freighter,B743
+74V,Boeing 747SR Freighter,B74R
+74X,Boeing 747-200 Freighter,B742
+74Y,Boeing 747-400 Freighter,B744
+752,Boeing 757-200 Passenger,B752
+753,Boeing 757-300 Passenger,B753
+75F,Boeing 757-200 Freighter,B752
+75M,Boeing 757-200 Mixed Configuration,B752
+75T,Boeing 757-300 (winglets) Passenger,B753
+75W,Boeing 757-200 (winglets) Passenger,B752
+762,Boeing 767-200 Passenger,B762

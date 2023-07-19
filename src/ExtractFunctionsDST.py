@@ -7,7 +7,7 @@ from datetime import datetime
 import os 
 
 headers = {
-    "Authorization": "Bearer 8dh46yd7yng3prkueje5mnxp",
+    "Authorization": "Bearer urbsgx2u2k9mz4tw7xmtd633",
     "Accept": "application/json"
     }
 
@@ -103,8 +103,8 @@ def process_airline_data(filename):
         pd.DataFrame: Processed airline data as a Pandas DataFrame.
     """
     # Read airlines.json
-    output_file = "airline1.csv"
-    with open("airlines.json", "r") as file:
+    output_file = "./data/extractedcsv/airline.csv"
+    with open(filename, "r") as file:
         data = json.load(file)
         df_raw_airline = pd.DataFrame(data['Airline'])
 
@@ -163,7 +163,7 @@ def process_flight_schedule(filename):
     scheduleDF = dfCleanSchedule[['airline', 'flightNumber', 'arrivalTime', 'TimeVariation', 'departureTime', 'aircraftOwner',
                             'aircraftType', 'destination', 'origin', 'startDate', 'endDate']]
 
-    scheduleDF.to_csv("flight_schedule1.csv", index=False)
+    scheduleDF.to_csv("./data/extractedcsv/flight_schedule.csv", index=False)
 
     return scheduleDF
 
@@ -207,7 +207,7 @@ def process_airport_data(filename):
     
     transformed_airport_df.rename(columns=column_mapping_airport, inplace=True)
     
-    transformed_airport_df.to_csv("aircraft1.csv", index=False)
+    transformed_airport_df.to_csv("./data/extractedcsv/aircraft.csv", index=False)
     
     return transformed_airport_df
 
@@ -237,7 +237,7 @@ def process_aircraft_data(filename):
     transformed_aircraft_df['Names'] = transformed_aircraft_df['Names'].str['Name'].str['$']
     transformed_aircraft_df.rename(columns=column_mapping_aircraft, inplace=True)
     
-    transformed_aircraft_df.to_csv("airport1.csv", index=False)
+    transformed_aircraft_df.to_csv("./data/extractedcsv/airport.csv", index=False)
     
     return transformed_aircraft_df
 
@@ -343,7 +343,7 @@ def process_flight_status_data(filename):
     df_merged_status = df_raw_status.merge(df_raw_status_1, how='outer')
 
     df_merged_status.dropna(how='all', inplace=True)
-    df_merged_status.to_csv(f"flight_status{formattedDate}.csv", index=False)
+    df_merged_status.to_csv(f"./data/extractedcsv/flight_status{formattedDate}.csv", index=False)
     return df_merged_status
 
 

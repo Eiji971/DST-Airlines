@@ -112,7 +112,7 @@ def process_airline_data(filename):
     column_mapping_airline = {
         "AirlineID": "AirlineID",
         "AirlineID_ICAO": "AirlineID_ICAO",
-        "$": "Names"
+        "$": "Name"
     }
 
     # Apply transformation to the DataFrame
@@ -207,7 +207,7 @@ def process_airport_data(filename):
     
     transformed_airport_df.rename(columns=column_mapping_airport, inplace=True)
     
-    transformed_airport_df.to_csv("./data/extractedcsv/aircraft.csv", index=False)
+    transformed_airport_df.to_csv("./data/extractedcsv/airport.csv", index=False)
     
     return transformed_airport_df
 
@@ -237,7 +237,7 @@ def process_aircraft_data(filename):
     transformed_aircraft_df['Names'] = transformed_aircraft_df['Names'].str['Name'].str['$']
     transformed_aircraft_df.rename(columns=column_mapping_aircraft, inplace=True)
     
-    transformed_aircraft_df.to_csv("./data/extractedcsv/airport.csv", index=False)
+    transformed_aircraft_df.to_csv("./data/extractedcsv/aircraft.csv", index=False)
     
     return transformed_aircraft_df
 

@@ -1,0 +1,54 @@
+version: "3.9"
+services:
+  # MySQL Service
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=Bootcamp
+      - MYSQL_PASSWORD=Lufthansa
+      - MYSQL_DATABASE=sys
+    hostname: db
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      - ./extract_data:/data/extractedcsv
+
+  # MongoDB Service
+  mongodb:
+    build:
+      context: ./database/
+      dockerfile: Mongodb.dockerfile
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=Lufthansa
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongodb_data:/data/db
+   
+
+  mysql-setup:
+    build: 
+      context: ./database/
+      dockerfile: mysql_setup.dockerfile
+    depends_on:
+      - mysql
+    volumes:
+      - ./extract_data:/data/extractedjson
+      - ./extract_data:/data/extractedcsv
+
+  base-extract:
+    build: 
+      context: ./src/
+      dockerfile: base_extract.dockerfile
+    volumes:
+      - ./extract_data:/data/extractedjson
+      - ./extract_data:/data/extractedcsv
+      
+volumes:
+  extract_data:
+  mysql_data:
+  mongodb_data:

@@ -5,10 +5,13 @@ import time
 import requests
 from datetime import datetime
 import os 
+from Authentication_key_retrieval import get_valid_token
 
+bearer_token = get_valid_token()
+# Information on the headers for API calls
 headers = {
-    "Authorization": "Bearer urbsgx2u2k9mz4tw7xmtd633",
-    "Accept": "application/json"
+        "Authorization": f"Bearer {bearer_token}",
+        "Accept": "application/json"
     }
 
 
@@ -103,7 +106,7 @@ def process_airline_data(filename):
         pd.DataFrame: Processed airline data as a Pandas DataFrame.
     """
     # Read airlines.json
-    output_file = "./data/extractedcsv/airline.csv"
+    output_file = "/data/extractedcsv/airline.csv"
     with open(filename, "r") as file:
         data = json.load(file)
         df_raw_airline = pd.DataFrame(data['Airline'])
@@ -119,6 +122,7 @@ def process_airline_data(filename):
     transformed_airline_df = transform_df(df_raw_airline, column_mapping_airline)
 
     # Write transformed DataFrame to CSV
+    transformed_airline_df = transformed_airline_df.dropna()
     transformed_airline_df.to_csv(output_file, index=False)
 
     return transformed_airline_df
@@ -206,8 +210,8 @@ def process_airport_data(filename):
     transformed_airport_df["Names"] = transformed_airport_df["Names"].apply(lambda x: x[0] if isinstance(x, list) and len(x) > 0 else None)
     
     transformed_airport_df.rename(columns=column_mapping_airport, inplace=True)
-    
-    transformed_airport_df.to_csv("./data/extractedcsv/airport.csv", index=False)
+    transformed_airport_df = transformed_airport_df.dropna()
+    transformed_airport_df.to_csv("/data/extractedcsv/airport.csv", index=False)
     
     return transformed_airport_df
 
@@ -236,8 +240,8 @@ def process_aircraft_data(filename):
     transformed_aircraft_df = df_raw_aircraft.copy()
     transformed_aircraft_df['Names'] = transformed_aircraft_df['Names'].str['Name'].str['$']
     transformed_aircraft_df.rename(columns=column_mapping_aircraft, inplace=True)
-    
-    transformed_aircraft_df.to_csv("./data/extractedcsv/aircraft.csv", index=False)
+    transformed_aircraft_df = transformed_aircraft_df.dropna()
+    transformed_aircraft_df.to_csv("/data/extractedcsv/aircraft.csv", index=False)
     
     return transformed_aircraft_df
 

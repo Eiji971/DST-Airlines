@@ -6,10 +6,10 @@ def create_table_schema(table_schema):
     try:
         # Connect to the MySQL server 
         conn = mysql.connector.connect(
-            host='127.0.0.1',
-            port='3307',
+            host='mysql',
+            port='3306',
             user='root',
-            password='Lufthansa',
+            password='Bootcamp',
             database='sys',
         )
 
@@ -41,29 +41,29 @@ def create_table_schema(table_schema):
 airline_table_schema = (
     "CREATE TABLE IF NOT EXISTS Airline ("
     "  AirlineID VARCHAR(10) PRIMARY KEY,"
-    "  AirlineID_ICAO VARCHAR(45) NOT NULL,"
-    "  Name VARCHAR(45) NOT NULL"
+    "  AirlineID_ICAO VARCHAR(45),"
+    "  Names VARCHAR(45)"
     ")"
 )
 
 aircraft_table_schema = (
     "CREATE TABLE IF NOT EXISTS Aircraft ("
     "  AircraftCode VARCHAR(6) PRIMARY KEY,"
-    "  Names VARCHAR(45) NOT NULL,"
-    "  Name VARCHAR(10) NOT NULL"
+    "  Names VARCHAR(45),"
+    "  Name VARCHAR(10)"
     ")"
 )
 
 airport_table_schema = (
     "CREATE TABLE IF NOT EXISTS Airport ("
     "  AirportCode VARCHAR(15) PRIMARY KEY,"
-    "  City VARCHAR(45) NOT NULL,"
-    "  Country VARCHAR(45) NOT NULL,"
-    "  Names VARCHAR(45) NOT NULL,"
-    "  UtcOffset VARCHAR(45) NOT NULL,"
-    "  TimeZoneId VARCHAR(45) NOT NULL,"
-    "  Latitude FLOAT NOT NULL,"
-    "  Longitude FLOAT NOT NULL"
+    "  City VARCHAR(45),"
+    "  Country VARCHAR(45),"
+    "  Names VARCHAR(45),"
+    "  UtcOffset VARCHAR(45),"
+    "  TimeZoneId VARCHAR(45),"
+    "  Latitude FLOAT,"
+    "  Longitude FLOAT"
     ")"
 )
 
@@ -73,10 +73,10 @@ def ingest_data_from_dataframe(filepath, table_name):
     try:
         # Connect to the MySQL server
         conn = mysql.connector.connect(
-            host='127.0.0.1',
-            port='3307',
+            host='mysql',
+            port='3306',
             user='root',
-            password='Lufthansa',
+            password='Bootcamp',
             database='sys',
         )
 
@@ -113,6 +113,6 @@ create_table_schema(airport_table_schema)
 create_table_schema(airline_table_schema)
 create_table_schema(aircraft_table_schema)
 
-ingest_data_from_dataframe('/Users/emerybosc/DST-Airlines/data/extractedcsv/aircraft.csv', 'Airport')
-ingest_data_from_dataframe('/Users/emerybosc/DST-Airlines/data/extractedcsv/aircraft.csv', 'Airline')
-ingest_data_from_dataframe('/Users/emerybosc/DST-Airlines/data/extractedcsv/aircraft.csv', 'Aircraft')
+ingest_data_from_dataframe('/data/extractedcsv/aircraft.csv', 'Aircraft')
+ingest_data_from_dataframe('/data/extractedcsv/airline.csv', 'Airline')
+ingest_data_from_dataframe('/data/extractedcsv/airport.csv', 'Airport')

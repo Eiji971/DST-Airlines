@@ -2,8 +2,8 @@ FROM python:3.11
 
 WORKDIR /app
 
-RUN pip install --no-cache-dir mysql-connector-python pandas
+RUN pip install --no-cache-dir mysql-connector-python pandas==1.5.3
 
-COPY database/mysql_database_setup.py ./database/
+COPY mysql_database_setup.py ./database/
 
-CMD ["python", "./database/mysql_database_setup.py"]
+CMD ["python", "database/mysql_database_setup.py"]

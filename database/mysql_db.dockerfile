@@ -2,7 +2,7 @@
 FROM mysql:latest
 
 # Expose the default MySQL port
-EXPOSE 3307
+EXPOSE 3306
 
 # Start the MySQL server
 CMD ["mysqld"]

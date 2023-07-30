@@ -10,11 +10,6 @@ x-airflow-common: &airflow-common
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
     AIRFLOW__CORE__LOAD_EXAMPLES: "false"
     AIRFLOW__API__AUTH_BACKEND: "airflow.api.auth.backend.basic_auth"
-    AIRFLOW__SMTP__SMTP_HOST: "smtp.gmail.com"
-    AIRFLOW__SMTP__SMTP_PORT: 587
-    AIRFLOW__SMTP__SMTP_USER: "de.airflow@gmail.com"
-    AIRFLOW__SMTP__SMTP_PASSWORD: "cfsrvkongsobheta"
-    AIRFLOW__SMTP__SMTP_MAIL_FROM: "de.airflow@gmail.com"
 
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:- scikit-learn}
   volumes:
@@ -41,6 +36,9 @@ services:
 
   airflow-webserver:
     <<: *airflow-common
+    build:
+      context: .
+      dockerfile: Dockerfile
     command: webserver
     ports:
       - 8080:8080
@@ -48,6 +46,9 @@ services:
 
   airflow-scheduler:
     <<: *airflow-common
+    build:
+      context: .
+      dockerfile: Dockerfile
     command: scheduler
     restart: always
 

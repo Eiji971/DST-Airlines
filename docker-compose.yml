@@ -47,7 +47,16 @@ services:
     volumes:
       - ./extract_data:/data/extractedjson
       - ./extract_data:/data/extractedcsv
-      
+  
+  fastapi:
+    build: 
+      context: ./
+      dockerfile: ./api/api.dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./extract_data:/data/extractedcsv
+
 volumes:
   extract_data:
   mysql_data:

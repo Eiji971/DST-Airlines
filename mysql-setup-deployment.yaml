@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ./docker-compose.yml
+    kompose.version: 1.30.0 (9d8dcb518)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: mysql-setup
+  name: mysql-setup
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: mysql-setup
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f ./docker-compose.yml
+        kompose.version: 1.30.0 (9d8dcb518)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/dst-airlines-default: "true"
+        io.kompose.service: mysql-setup
+    spec:
+      containers:
+        - image: gcr.io/boxwood-bliss-394415/dst-airlines-mysql-setup:latest
+          name: mysql-setup
+          resources: {}
+          volumeMounts:
+            - mountPath: /data/extractedjson
+              name: mysql-setup-claim0
+            - mountPath: /data/extractedcsv
+              name: mysql-setup-claim1
+      restartPolicy: Always
+      volumes:
+        - name: mysql-setup-claim0
+          persistentVolumeClaim:
+            claimName: mysql-setup-claim0
+        - name: mysql-setup-claim1
+          persistentVolumeClaim:
+            claimName: mysql-setup-claim1
+status: {}
